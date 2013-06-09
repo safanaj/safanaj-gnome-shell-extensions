@@ -1,0 +1,7 @@
+{
+    "extension-id": "@extension_id@",
+    "shell-version": ["@shell_current@"],
+    "uuid": "@uuid@",
+    "name": "UPower",
+    "description": "Simple UPower DBus service interface"
+}
