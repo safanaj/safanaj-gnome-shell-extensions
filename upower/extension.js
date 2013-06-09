@@ -61,27 +61,8 @@ const Indicator = new Lang.Class({
 	    '/org/freedesktop/UPower');
 
 	let [_names] = this._proxy.EnumerateDevicesSync();
-	// Lang.bind(this, function (devs) {
-	//     log("Enumerated: "+ devs);
-	//     let [_names] = devs;
-	//     for (let i = 0; i < _names.length; i++) {
-	// 	if (/battery_BAT1$/.test(_names[i])) {
-	// 	    log("AAA: "+ _names[i] +" match!");
-	// 	    this._battery_path = _names[i];
-	// 	    log("Yet battery path: "+ this._battery_path);
-	// 	    this._battery = new ProxyUPowerDevice(Gio.DBus.system,
-	// 						  'org.freedesktop.UPower',
-	// 						  this._battery_path);
-	// 	    this._battery.connect('g-signal',
-	// 				  Lang.bind(this, this._batteryChanged));
-	// 	}
-	//     }
-	// }));
 	for (let i = 0; i < _names.length; i++) {
 	    if (/battery_BAT1$/.test(_names[i])) {
-		//log("AAA: "+ _names[i] +" match!");
-		//this._battery_path = _names[i];
-		//log("Yet battery path: "+ this._battery_path);
 		this._battery = new ProxyUPowerDevice(Gio.DBus.system,
 						      'org.freedesktop.UPower',
 						      _names[i]);
@@ -150,8 +131,6 @@ const Indicator = new Lang.Class({
     },
 
     _updateLabel: function (){
-	//let battery = this._getBattery();
-	//log("in updateLabel, battery: " + battery);
 	if (this._battery != undefined)
 	    {
 		let perc = this._battery.Percentage;
